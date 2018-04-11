@@ -1,0 +1,35 @@
+{
+  "name": "speed_camera",
+  "version": "1.0.0",
+  "description": "neccessary package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.11.2"
+  },
+  "author": "pingyu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "linebot": "^1.4.1",
+    "node-fetch": "^2.1.2"
+  },
+  "keywords": [
+    "linebot",
+    "node",
+    "keroku",
+    "express"
+  ],
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinguyoo/speed_camera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pinguyoo/speed_camera/issues"
+  },
+  "homepage": "https://github.com/pinguyoo/speed_camera#readme"
+}
