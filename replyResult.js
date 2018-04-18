@@ -21,7 +21,7 @@ module.exports = function getResult(request) {
                 let camera = { lat: cameras[i].Latitude, lng: cameras[i].Longitude };
                 locationUrl += '&markers=color:blue%7Clabel:S%7C' + camera.lat + ',' + camera.lng;
             }
-            locationUrl += '&key=AIzaSyCf8VfR0gv38qdnmlvrYObyBoBmzp-vRlA';
+            locationUrl += '&key=' + process.env.STATICMAPKEY;
             locationResult = { uri: locationUrl, cameras: cameras };
             resolve(locationResult);
         });

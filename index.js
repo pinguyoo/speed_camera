@@ -70,14 +70,14 @@ bot.on('postback', function (event) {
      
         for (let i = 0; i < data.cameras.length; i++) {
             carousels.push({
-                thumbnailImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&zoom=10&size=600x300&maptype=roadmap%20&markers=color:blue%7Clabel:S%7C' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&key=AIzaSyCf8VfR0gv38qdnmlvrYObyBoBmzp-vRlA',
+                thumbnailImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&zoom=10&size=600x300&maptype=roadmap%20&markers=color:blue%7Clabel:S%7C' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&key=' + process.env.STATICMAPKEY,
                 title: data.cameras[i].Address,
                 text: '座標: ' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '\n城市: ' + data.cameras[i].CityName + data.cameras[i].RegionName +
                     '\n方向: ' + data.cameras[i].direct + '   速限: ' + data.cameras[i].limit,
                 actions: [{
                     type: 'uri',
                     label: '查看',
-                    uri: 'https://maps.googleapis.com/maps/api/staticmap?center=' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&zoom=10&size=600x300&maptype=roadmap%20&markers=color:blue%7Clabel:S%7C' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&key=AIzaSyCf8VfR0gv38qdnmlvrYObyBoBmzp-vRlA'
+                    uri: 'https://maps.googleapis.com/maps/api/staticmap?center=' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&zoom=10&size=600x300&maptype=roadmap%20&markers=color:blue%7Clabel:S%7C' + data.cameras[i].Latitude + ',' + data.cameras[i].Longitude + '&key=' + process.env.STATICMAPKEY
                 }]
             });
         }

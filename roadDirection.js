@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 
 module.exports = function(departure, destination) {
     return new Promise((resolve, reject) => {
-        const URL = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + encodeURIComponent(departure) + '&destination=' + encodeURIComponent(destination) + '&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
+        const URL = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + encodeURIComponent(departure) + '&destination=' + encodeURIComponent(destination) + '&key=' + process.env.DIRECTIONKEY;
         fetch(URL, { method: 'GET', cache: 'no-cache' })
             .then((response) => {
                 return response.json();

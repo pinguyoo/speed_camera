@@ -8,15 +8,15 @@ const distanceCalculate = require('./distanceCalculate');
 
 module.exports = function parse(departure, destination) {
     return new Promise((resolve, reject) => {
-        const departureUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + encodeURIComponent(departure) + '&types=address&language=zh-TW&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
-        const destinationUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + encodeURIComponent(destination) + '&types=address&language=zh-TW&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
+        const departureUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + encodeURIComponent(departure) + '&types=address&language=zh-TW&key=' + process.env.GEOCODEKEY;
+        const destinationUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + encodeURIComponent(destination) + '&types=address&language=zh-TW&key=' + process.env.GEOCODEKEY;
         const urls = [departureUrl, destinationUrl];
         Promise.all(urls.map(url => fetch(url, { method: 'GET', cache: 'no-cache' }).then(response => response.json())))
         .then(datas => {
             const departureAddress = encodeURIComponent(datas[0].predictions[0].description);
             const destinationAddress = encodeURIComponent(datas[1].predictions[0].description);
-            const departureGeoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + departureAddress + '&sensor=false&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
-            const destinationGeoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + destinationAddress + '&sensor=false&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
+            const departureGeoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + departureAddress + '&sensor=false&key=' + process.env.GEOCODEKEY;
+            const destinationGeoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + destinationAddress + '&sensor=false&key=' + process.env.GEOCODEKEY;
             let geoUrls = [departureGeoUrl, destinationGeoUrl];
             Promise.all(geoUrls.map(geoUrl => fetch(geoUrl, { method: 'GET', cache: 'no-cache' }).then(response => response.json())))
             .then((locations) => {

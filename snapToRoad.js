@@ -5,7 +5,7 @@ module.exports = function snapToRoad(departure, destination) {
     return new Promise((resolve, reject) => {
         const routes = direction(departure, destination);
         routes.then((data) => {
-            const URL = 'https://roads.googleapis.com/v1/snapToRoads?path=' + data + '&interpolate=true&key=AIzaSyC57k-Y-1nHz_scIJ6PXEVmn1_wyDkD1x8';
+            const URL = 'https://roads.googleapis.com/v1/snapToRoads?path=' + data + '&interpolate=true&key=' + process.env.SNAPTOROADKEY;
             fetch(URL, { method: 'GET', cache: 'no-cache' })
                 .then((response) => {
                     return response.json();
